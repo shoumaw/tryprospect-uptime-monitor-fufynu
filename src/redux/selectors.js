@@ -11,4 +11,5 @@ export const getLatencyByDomain = (state, domain) =>
 export const getStatusByDomain = (state, domain) =>
   state.uptimes[domain].status ? "OK" : "FAILED";
 
-export const getDomains = state => state.domains;
+export const getDomains = state =>
+  state.domains.domains;

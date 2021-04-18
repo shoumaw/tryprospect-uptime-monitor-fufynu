@@ -4,11 +4,11 @@ import moment from "moment";
 
 import { getLastCheckedByDomain, getLatencyByDomain, getStatusByDomain } from '../redux/selectors';
 import DomainField from './DomainField'
-export default function ServerStatus({
+const ServerStatus = ({
   domain,
   latency,
   status
-}) {
+}) => {
   const lastChecked = moment().format('HH:mm:ss')
   return (
 

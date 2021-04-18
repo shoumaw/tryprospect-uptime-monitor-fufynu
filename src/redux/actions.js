@@ -7,10 +7,11 @@ export const setUptime = data =>
       data
     }
   });
-export const addDomain = domain =>
-  store.dispatch({
+export const addDomain = domain => {
+  return store.dispatch({
     type: "ADD_DOMAIN",
     payload: {
       domain
     }
   });
+}

@@ -19,7 +19,6 @@ function domains(
 ) {
   switch (action.type) {
     case "ADD_DOMAIN":
-      console.log("hey", state);
       return {
         ...state,
         domains: [...state.domains, action.payload.domain]

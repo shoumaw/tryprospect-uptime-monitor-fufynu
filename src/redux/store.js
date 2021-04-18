@@ -3,4 +3,4 @@ import logger from "redux-logger";
 
 import reducer from "./reducer";
 
-export default createStore(reducer, applyMiddleware(logger));
+export default createStore(reducer);

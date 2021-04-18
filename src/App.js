@@ -1,5 +1,5 @@
 import { map } from "lodash";
-import React from "react";
+import React, { useEffect } from "react";
 import { connect, useSelector } from "react-redux";
 
 import ServerStatus from "./components/ServerStatus";
@@ -8,8 +8,10 @@ import { getUptimes, getDomains } from "./redux/selectors";
 import DomainField from "./components/DomainField";
 import "./style.css";
 
-function App({ uptimes, domains }) {
-  startUptimeCheckInterval(domains);
+const App = ({ uptimes, domains }) => {
+  useEffect(() => {
+    startUptimeCheckInterval(domains);
+  }, [domains])
 
   return (
     <div className="container">
