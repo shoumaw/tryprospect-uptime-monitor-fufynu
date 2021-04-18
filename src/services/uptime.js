@@ -1,16 +1,16 @@
 import axios from "axios";
-
+import { useSelector } from "react-redux";
 import { setUptime } from "../redux/actions";
-
+import { getDomains } from "../redux/selectors";
 const DOMAINS_TO_CHECK = [
   "passfoo.com",
   "failxx.com",
   "salesforce.com",
   "gmail.com"
 ];
-
-const checkUptime = async () => {
-  for (const domain of DOMAINS_TO_CHECK) {
+const checkUptime = async domains => {
+  console.log("wwww", domains);
+  for (const domain of domains) {
     /**
      * This endpoint is a dummy endpoint we have implemented for the purpose of this challenge.
      *
@@ -26,8 +26,8 @@ const checkUptime = async () => {
   }
 };
 
-export default () => {
-  checkUptime();
+export default domains => {
+  checkUptime(domains);
 
   setInterval(checkUptime, 5000);
 };
