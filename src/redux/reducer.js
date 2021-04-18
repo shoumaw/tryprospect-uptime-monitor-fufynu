@@ -1,22 +1,34 @@
 import { combineReducers } from "redux";
 
-function uptimes(action = {}, state) {
-  switch (state.type) {
+function uptimes(state = {}, action) {
+  switch (action.type) {
     case "SET_UPTIME":
       return {
-        ...action,
-        [state.payload.data.domain]: state.payload.data
-      };
-    case "ADD_DOMAIN":
-      return {
-        ...action,
-        domains: [...state.domains, state.payload.domain]
+        ...state,
+        [action.payload.data.domain]: action.payload.data
       };
     default:
-      return action;
+      return state;
   }
 }
-
+function domains(
+  state = {
+    domains: ["passfoo.com", "failxx.com", "salesforce.com", "gmail.com"]
+  },
+  action
+) {
+  switch (action.type) {
+    case "ADD_DOMAIN":
+      console.log("hey", state);
+      return {
+        ...state,
+        domains: [...state.domains, action.payload.domain]
+      };
+    default:
+      return state;
+  }
+}
 export default combineReducers({
-  uptimes
+  uptimes,
+  domains
 });

@@ -1,16 +1,16 @@
 import { map } from "lodash";
 import React from "react";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 
 import ServerStatus from "./components/ServerStatus";
 import startUptimeCheckInterval from "./services/uptime";
-import { getUptimes } from "./redux/selectors";
+import { getUptimes, getDomains } from "./redux/selectors";
 import DomainField from "./components/DomainField";
 import "./style.css";
 
-startUptimeCheckInterval();
+function App({ uptimes, domains }) {
+  startUptimeCheckInterval(domains);
 
-function App({ uptimes }) {
   return (
     <div className="container">
       <h1>Uptime Monitor</h1>
@@ -34,7 +34,8 @@ function App({ uptimes }) {
 
 const enhance = connect(
   state => ({
-    uptimes: getUptimes(state)
+    uptimes: getUptimes(state),
+    domains: getDomains(state)
   }),
   dispatch => ({})
 );
